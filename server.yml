@@ -12,7 +12,7 @@
         enabled: yes
     - name: Copy index.html
       template:
-        src: https://github.com/jesperberth/ansible/blob/master/index.html
+        src: index.html
         dest: /var/www/html/index.html
       notify:
        - restart httpd
