@@ -21,7 +21,11 @@
        name: httpd
        state: started
     - name: Firewall Allow Http
-      command: firewall-cmd --zone=public --permanent --add-service=http
+      firewalld:
+        zone: public
+        service: http
+        permanent: true
+        state: enabled
   handlers:
     - name: restart httpd
       service:
