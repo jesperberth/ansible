@@ -15,6 +15,7 @@
         datastore: St01_ZFS_LUN05
         folder: test001
     vm_nic:
+     nic1:
         type: vmxnet3
         network: "125 - redhat.local"
         network_type: dvs
