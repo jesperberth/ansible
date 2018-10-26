@@ -1,30 +1,18 @@
 ---
-- vsphere_guest:
-    vcenter_hostname: vcenter.arrowdemo.local
-    guest: test001
-    state: powered_on
-    vm_extra_config:
-      vcpu.hotadd: yes
-      mem.hotadd:  yes
-      notes: This is a test VM
-      folder: MyFolder
-    vm_disk:
-      disk1:
-        size_gb: 10
-        type: thin
-        datastore: St01_ZFS_LUN05
-        folder: test001
-    vm_nic:
-     nic1:
-        type: vmxnet3
-        network: "125 - redhat.local"
-        network_type: dvs
-    vm_hardware:
-      memory_mb: 2048
-      num_cpus: 2
-      osid: centos64Guest
-      scsi: paravirtual
-    esxi:
-      datacenter: Arrowdemo
-      hostname: esxhost01.arrowdemo.local
-  delegate_to: localhost
+- name: Create a VM from a template
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: Clone the template
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: False
+      name: testvm_2
+      template: _TEMP_centos7_x64
+      datacenter: "{{ datacenter_name }}"
+      folder: /
+      state: poweredon
+      cluster: "{{ cluster_name }}"
+      wait_for_ip_address: yes
