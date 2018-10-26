@@ -5,6 +5,7 @@
   tasks:
   - name: Clone the template
     vmware_guest:
+      hostname: vcenter.arrowdemo.local
       validate_certs: False
       name: testvm_2
       template: _TEMP_centos7_x64
