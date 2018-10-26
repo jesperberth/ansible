@@ -1,3 +1,4 @@
+---
 - name: Create Azure VM
   hosts: localhost
   connection: local
@@ -51,7 +52,7 @@
       name: myVM
       vm_size: Standard_DS1_v2
       admin_username: jesbe
-      admin_password: password123password123
+      admin_password: Password123Password123
       network_interfaces: myNIC
       image:
         offer: CentOS
