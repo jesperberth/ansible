@@ -1,0 +1,32 @@
+---
+- vsphere_guest:
+    vcenter_hostname: vcenter.arrowdemo.local
+    guest: test001
+    state: powered_on
+    vm_extra_config:
+      vcpu.hotadd: yes
+      mem.hotadd:  yes
+      notes: This is a test VM
+      folder: MyFolder
+    vm_disk:
+      disk1:
+        size_gb: 10
+        type: thin
+        datastore: St01_ZFS_LUN05
+        # VMs can be put into folders. The value given here is either the full path
+        # to the folder (e.g. production/customerA/lamp) or just the last component
+        # of the path (e.g. lamp):
+        folder: test001
+    vm_nic:
+        type: vmxnet3
+        network: "125 - redhat.local"
+        network_type: dvs
+    vm_hardware:
+      memory_mb: 2048
+      num_cpus: 2
+      osid: centos64Guest
+      scsi: paravirtual
+    esxi:
+      datacenter: Arrowdemo
+      hostname: esxhost01.arrowdemo.local
+  delegate_to: localhost
