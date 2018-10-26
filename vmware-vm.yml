@@ -5,9 +5,6 @@
   tasks:
   - name: Clone the template
     vmware_guest:
-      hostname: "{{ vcenter_ip }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
       validate_certs: False
       name: testvm_2
       template: _TEMP_centos7_x64
