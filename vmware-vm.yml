@@ -13,9 +13,6 @@
         size_gb: 10
         type: thin
         datastore: St01_ZFS_LUN05
-        # VMs can be put into folders. The value given here is either the full path
-        # to the folder (e.g. production/customerA/lamp) or just the last component
-        # of the path (e.g. lamp):
         folder: test001
     vm_nic:
         type: vmxnet3
