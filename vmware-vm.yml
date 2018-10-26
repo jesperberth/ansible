@@ -5,12 +5,12 @@
   tasks:
   - name: Clone the template
     vmware_guest:
-      hostname: "{{ vcenter_ip }}"
+      hostname: vcenter.arrowdemo.local
       validate_certs: False
       name: testvm_2
       template: _TEMP_centos7_x64
-      datacenter: "{{ datacenter_name }}"
+      datacenter: Arrowdemo
       folder: /
       state: poweredon
-      cluster: "{{ cluster_name }}"
+      cluster: Democluster01
       wait_for_ip_address: yes
