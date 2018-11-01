@@ -1,5 +1,5 @@
 ---
-- name: Install IIS (Web-Server only)
+- name: Install IIS
   win_feature:
     name: Web-Server
     state: present
