@@ -1,0 +1,7 @@
+---
+- name: Run Windows Update Security Only
+  hosts: Windows
+  tasks:
+    - name: Windows Update
+      win_updates:
+      category_names: SecurityUpdates
