@@ -4,6 +4,6 @@
   tasks:
     - name: Windows Update
       win_updates:
-        category_names: 
+        category_names:
           - SecurityUpdates
         reboot: yes
