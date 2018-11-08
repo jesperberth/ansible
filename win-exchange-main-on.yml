@@ -1,0 +1,5 @@
+---
+- name: Enable Exchange Maintenance Mode
+  hosts: "{{ hosts }}"
+  tasks:
+    - name: Enable Exchange Maintenance Mode

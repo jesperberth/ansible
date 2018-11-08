@@ -1,5 +1,5 @@
 ---
-- name: Exchange Maintenance Mode
+- name: Install Exchange DSC Module
   hosts: "{{ hosts }}"
   tasks:
     - name: Install xExchange
