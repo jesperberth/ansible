@@ -9,5 +9,5 @@
           - CriticalUpdates
           - UpdateRollups
         reboot: yes
-      register:  installed_update_count
-    - debug: var=installed_update_count
+      register:  UpdateStatus
+    - debug: var=UpdateStatus
