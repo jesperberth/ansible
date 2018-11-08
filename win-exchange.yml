@@ -1,1 +1,6 @@
 ---
+- name: Exchange Maintenance Mode
+  hosts: "{{ hosts }}"
+  tasks:
+    - name: Ping
+      win_ping: data
