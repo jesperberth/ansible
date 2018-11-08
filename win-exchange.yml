@@ -2,5 +2,7 @@
 - name: Exchange Maintenance Mode
   hosts: "{{ hosts }}"
   tasks:
-    - name: Ping
-      win_ping: data
+    - name: Install xExchange
+      win_psmodule:
+        name: xExchange
+        state: present
