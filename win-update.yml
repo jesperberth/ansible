@@ -11,6 +11,6 @@
       register:  update_result
     - name: reboot
       win_reboot:
-        when: update_result.reboot_required
         reboot_timeout: 3600
+      when: update_result.reboot_required
     - debug: var=update_result
