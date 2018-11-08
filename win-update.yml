@@ -9,3 +9,4 @@
           - CriticalUpdates
           - UpdateRollups
         reboot: yes
+        return:  installed_update_count
