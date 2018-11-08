@@ -8,6 +8,9 @@
           - SecurityUpdates
           - CriticalUpdates
           - UpdateRollups
-        reboot: yes
-      register:  UpdateStatus
-    - debug: var=UpdateStatus
+      register:  update_result
+    - name: reboot
+      win_reboot:
+        when: update_result.reboot_required
+        reboot_timeout: 3600
+    - debug: var=update_result
