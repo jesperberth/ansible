@@ -1,6 +1,6 @@
 ---
 - name: Ping
-  hosts: Windows
+  hosts: "{{ hosts }}"
   tasks:
     - name: Ping
       win_ping:
