@@ -1,11 +1,9 @@
 ---
 - name: Enable Exchange Maintenance Mode
   hosts: "{{ hosts }}"
+  become: yes
+  become_user: administrator@exch.arrowdemo.dk
   tasks:
     - name: Enable Exchange Maintenance Mode
-      win_dsc:
-        resource_name: xExchMaintenanceMode
-        Enabled: True
-        Credential:
-        PsDscRunAsCredential_username: "{{ ansible_user }}"
-        PsDscRunAsCredential_password: "{{ ansible_password }}"
+      win_shell: |
+        
