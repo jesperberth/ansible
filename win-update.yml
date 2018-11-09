@@ -1,6 +1,6 @@
 ---
 - name: Run Windows Update
-  hosts: Windows
+  hosts: "{{ maintenance }}"
   tasks:
     - name: Windows Update
       win_updates:
