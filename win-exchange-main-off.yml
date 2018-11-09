@@ -1,10 +1,9 @@
 ---
-- name: Disable Exchange Maintenance Mode
+- name: Exit Exchange Maintenance Mode
   hosts: "{{ maintenance }}"
   become: yes
-  become_user: administrator@exch.arrowdemo.dk
   tasks:
-    - name: Disable Exchange Maintenance Mode
+    - name: Exit Exchange Maintenance Mode
       win_shell: |
         Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn
         Set-ServerComponentState "{{ maintenance }}" -Component ServerWideOffline -State Active -Requester Maintenance
@@ -12,5 +11,3 @@
         Set-MailboxServer "{{ maintenance }}" -DatabaseCopyActivationDisabledAndMoveNow $False
         Set-MailboxServer "{{ maintenance }}" -DatabaseCopyAutoActivationPolicy Unrestricted
         Set-ServerComponentState "{{ maintenance }}" -Component HubTransport -State Active -Requester Maintenance
-        Restart-Service MSExchangeTransport
-        Restart-Service MSExchangeFrontEndTransport
