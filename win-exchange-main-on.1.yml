@@ -1,0 +1,7 @@
+---
+- name: Enable Exchange Maintenance Mode
+  hosts: "{{ hosts }}"
+  tasks:
+    - name: Enable Exchange Maintenance Mode
+      win_shell: dir c:\Temp
+      register: dir_out
