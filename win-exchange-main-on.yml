@@ -6,6 +6,6 @@
       win_dsc:
         resource_name: xExchMaintenanceMode
         Enabled: True
-        Credential:
-        Credential_username: "{{ ansible_user }}"
-        Credentual_password: "{{ ansible_password }}"
+        Credential:  PsDscRunAsCredential
+        PsDscRunAsCredential_username: "{{ ansible_user }}"
+        PsDscRunAsCredential_password: "{{ ansible_password }}"
