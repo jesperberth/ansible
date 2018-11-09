@@ -6,4 +6,4 @@
       win_dsc:
         resource_name: xExchMaintenanceMode
         Enabled: True
-        
+        Credential:
