@@ -6,5 +6,4 @@
       win_dsc:
         resource_name: xExchMaintenanceMode
         Enabled: True
-        Credential_username: '{{ansible_user}}'
-        Credentual_password: '{{ansible_password}}'
+        
