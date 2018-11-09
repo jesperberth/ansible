@@ -2,10 +2,9 @@
 - name: Enable Exchange Maintenance Mode
   hosts: "{{ hosts }}"
   become: yes
-  become_user: Administrator
+  become_user: administrator@exch.arrowdemo.dk
   tasks:
     - name: Enable Exchange Maintenance Mode
       win_shell: |
         Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn
         Get-ServerComponentState -Identity exch01.exch.arrowdemo.dk
-        
