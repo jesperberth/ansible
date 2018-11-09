@@ -3,5 +3,8 @@
   hosts: "{{ hosts }}"
   tasks:
     - name: Enable Exchange Maintenance Mode
-      win_shell: dir c:\Temp
-      register: dir_out
+      win_shell: |
+        Get-ServerComponentState -Identity exch01.exch.arrowdemo.dk
+      register: shell_out
+      debug: 
+        var: shell_out
