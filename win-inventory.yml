@@ -1,0 +1,9 @@
+---
+- name: Exchange Incentory
+  hosts: "{{ hosts }}"
+  tasks:
+    - name:  Get Exchange Mailbox DB servers
+      win_shell: |
+        Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn
+        Get-ExchangeServer | where {$_.ServerRole -eq "Mailbox"} | select -ExpandProperty fqdn
+      register:  exchange_list
