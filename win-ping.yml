@@ -4,7 +4,5 @@
   tasks:
     - name: Ping
       win_ping:
-    - setup:
-      register: ansible_facts
-    - debug: item
-      with_dict: ansible_facts
+    - debug: var=vars
+    - debug: var=hostvars[inventory_hostname]
