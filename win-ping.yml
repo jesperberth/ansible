@@ -4,5 +4,3 @@
   tasks:
     - name: Ping
       win_ping:
-    - debug: var=vars
-    - debug: var=hostvars[inventory_hostname]
