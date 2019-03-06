@@ -16,3 +16,6 @@
       state: poweredon
       cluster: Democluster01
       wait_for_ip_address: yes
+    register: newvm
+  - name: Show IP 
+    
