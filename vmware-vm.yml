@@ -12,7 +12,7 @@
       name: testvm_2
       template: _TEMP_centos7_x64
       disk:
-      - size_gb: 30
+      - size_gb: 70
         type: thin
         datastore: St01_ZFS_LUN05
       networks:
