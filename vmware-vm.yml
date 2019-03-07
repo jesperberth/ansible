@@ -23,4 +23,7 @@
       cluster: Democluster01
       wait_for_ip_address: yes
     register: newvm
+  - name: IP Info
+    debug:
+      msg: "{{ newvm.instance.ipv4 }} {{ hname }} {{ os }} {{ ver }}"
     
