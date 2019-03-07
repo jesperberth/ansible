@@ -25,5 +25,5 @@
     register: newvm
   - name: IP Info
     debug:
-      msg: "{{ newvm.instance.ipv4 }} {{ hname }} {{ os }} {{ ver }}"
+      msg: "{{ newvm.instance.ipv4 }}"
     
