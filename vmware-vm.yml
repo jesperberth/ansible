@@ -12,7 +12,9 @@
       name: testvm_2
       template: _TEMP_centos7_x64
       disk:
-      - datastore: St01_ZFS_LUN05
+      - size_gb: 30
+        type: thin
+        datastore: St01_ZFS_LUN05
       networks:
       - name: "125 - redhat.local"
       datacenter: Arrowdemo
