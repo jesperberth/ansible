@@ -11,11 +11,12 @@
       validate_certs: False
       name: testvm_2
       template: _TEMP_centos7_x64
+      networks:
+      - name: "125 - redhat.local"
       datacenter: Arrowdemo
-      folder: /
+      folder: "/Red Hat"
       state: poweredon
       cluster: Democluster01
       wait_for_ip_address: yes
     register: newvm
-  - name: Show IP 
     
