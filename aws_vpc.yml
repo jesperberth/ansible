@@ -116,7 +116,11 @@
       in_vpc: yes
     register: eip_b
 
-  - name: Create new nat gateway, using an EIP address  and wait for available status.
+  - name: test
+    debug:
+      msg: "{{ subnet-public-a.subnet.id }}"
+
+  - name: Create new nat gateway
     ec2_vpc_nat_gateway:
       state: present
       subnet_id: "{{ subnet-public-a.subnet.id }}"
