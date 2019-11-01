@@ -103,3 +103,24 @@
       tags:
         project: wordpress_ansible
     register: igw
+
+  - name: allocate eip az a
+    ec2_eip:
+      region: "{{ region }}"
+      in_vpc: yes
+    register: eip_a
+
+  - name: allocate eip az b
+    ec2_eip:
+      region: "{{ region }}"
+      in_vpc: yes
+    register: eip_b
+
+  - name: Create new nat gateway, using an EIP address  and wait for available status.
+    ec2_vpc_nat_gateway:
+      state: present
+      subnet_id: "{{ subnet-public-a.subnet.id }}"
+      eip_address: "{{ eip_a.public_ip }}"
+      wait: yes
+      region: "{{ region }}"
+    register: nat_gateway_public_a
