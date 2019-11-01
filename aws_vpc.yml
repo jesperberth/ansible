@@ -33,7 +33,7 @@
       resource_tags:
         project: wordpress_ansible
         Name: "public_az_{{ zone1 }}"
-    register: subnet-public-a
+    register: subnetpublica
 
   - name: create subnet public_b
     ec2_vpc_subnet:
@@ -106,12 +106,12 @@
 
   - name: test
     debug:
-      msg: "{{ subnet-public-a }}"
+      msg: "{{ subnetpublica }}"
 
   - name: Create new nat gateway
     ec2_vpc_nat_gateway:
       state: present
-      subnet_id: "{{ subnet-public-a.id }}"
+      subnet_id: "{{ subnetpublica.subnet.id }}"
       if_exist_do_not_create: true
       wait: yes
       region: "{{ region }}"
