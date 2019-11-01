@@ -106,6 +106,29 @@
         project: "{{ project_name }}"
     register: igw
 
+  - name: Get Route table
+    ec2_vpc_route_table_facts:
+      region: "{{ region }}"
+      filters:
+        vpc-id: "{{ network.vpc.id }}"
+    register: routea
+
+  - name: Setup route tables public az a
+    ec2_vpc_route_table:
+      region: "{{ region }}"
+      vpc_id: "{{ network.vpc.id }}"
+      lookup: id
+      purge_subnets: false
+      tags:
+        project: "{{ project_name }}"
+      route_table_id: "{{ routea.route_tables[0].id }}"
+      subnets: 
+        - "{{ subnetpublica.subnet.id }}"
+        - "{{ subnetpublicb.subnet.id }}"
+      routes:
+        - dest: 0.0.0.0/0
+          gateway_id: "{{ igw.gateway_id }}"
+
   - name: Create new nat gateway public a
     ec2_vpc_nat_gateway:
       state: present
@@ -124,27 +147,6 @@
       region: "{{ region }}"
     register: natgatewaypublicb
 
-  - name: Get Route table
-    ec2_vpc_route_table_facts:
-      region: "{{ region }}"
-      filters:
-        vpc-id: "{{ network.vpc.id }}"
-    register: routea
-
-  - name: Setup route tables public az a
-    ec2_vpc_route_table:
-      region: "{{ region }}"
-      vpc_id: "{{ network.vpc.id }}"
-      lookup: id
-      purge_subnets: false
-      tags:
-        project: "{{ project_name }}"
-      route_table_id: "{{ routea.route_tables[0].id }}"
-      subnets: "{{ subnetpublica.subnet.id }}"
-      routes:
-        - dest: 0.0.0.0/0
-          gateway_id: "{{ igw.gateway_id }}"
-
   - name: Debug
     debug:
       msg: "{{ natgatewaypublica }}"
@@ -160,5 +162,5 @@
         - "{{ subnetdataa.subnet.id }}"
       routes:
         - dest: 0.0.0.0/0
-          instance_id: "{{ natgatewaypublica.nat_gateway_id }}"
+          gateway_id: "{{ natgatewaypublica.nat_gateway_id }}"
     register: routenata
