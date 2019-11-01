@@ -133,4 +133,4 @@
 
   - name: Debug
     debug:
-      msg: "{{ route.route_tables.route_table_id }}"
+      msg: "{{ route.id }}"
