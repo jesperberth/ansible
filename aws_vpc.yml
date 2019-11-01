@@ -145,6 +145,10 @@
         - dest: 0.0.0.0/0
           gateway_id: "{{ igw.gateway_id }}"
 
+  - name: Debug
+    debug:
+      msg: "{{ natgatewaypublica }}"
+
   - name: Setup route tables web and data az a
     ec2_vpc_route_table:
       region: "{{ region }}"
