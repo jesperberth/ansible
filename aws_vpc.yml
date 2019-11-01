@@ -3,6 +3,12 @@
   vars:
     region: eu-west-1
     cidr: "10.0.0.0/16"
+    cidr_public_a: "10.0.1.0/24"
+    cidr_public_b: "10.1.1.0/24"
+    cidr_web_a: "10.0.2.0/24"
+    cidr_web_b: "10.1.2.0/24"
+    cidr_data_a: "10.0.3.0/24"
+    cidr_data_b: "10.1.3.0/24"
     zone1: a
     zone2: b
    
@@ -21,22 +27,22 @@
     ec2_vpc_subnet:
       region: "{{ region }}"
       state: present
-      cidr: "{{ cidr }}"
+      cidr: "{{ cidr_public_a }}"
       az: "{{ region }}{{ zone1 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
         project: wordpress_ansible
-        Name: "public_{{ zone1 }}"
+        Name: "public_az_{{ zone1 }}"
     register: subnet-public-a
 
   - name: create subnet public_b
     ec2_vpc_subnet:
       region: "{{ region }}"
       state: present
-      cidr: "{{ cidr }}"
+      cidr: "{{ cidr_public_b }}"
       az: "{{ region }}{{ zone2 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
         project: wordpress_ansible
-        Name: "public_{{ zone2 }}"
+        Name: "public_az_{{ zone2 }}"
     register: subnet-public-b
