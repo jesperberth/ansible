@@ -94,3 +94,12 @@
         project: wordpress_ansible
         Name: "data_az_{{ zone2 }}"
     register: subnet-data-b
+
+  - name: vpc internet gateway
+    ec2_vpc_igw:
+      region: "{{ region }}"
+      vpc_id: "{{ network.vpc.id }}"
+      state: present
+      tags:
+        project: wordpress_ansible
+    register: igw
