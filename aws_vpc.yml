@@ -2,10 +2,10 @@
 - hosts: all
   tasks:
   - name: create VPC
-  ec2_vpc_net:
-    name: Wordpress2
-    cidr_block: 10.10.0.0/16
-    region: eu-west-1
-    tags:
-      project: wordpress_ansible
- 
+    ec2_vpc_net:
+      name: Wordpress2
+      cidr_block: 10.10.0.0/16
+      region: eu-west-1
+      tags:
+        project: wordpress_ansible
+   
