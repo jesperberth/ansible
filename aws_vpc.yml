@@ -45,7 +45,7 @@
       resource_tags:
         project: wordpress_ansible
         Name: "public_az_{{ zone2 }}"
-    register: subnet-public-b
+    register: subnetpublicb
 
   - name: create subnet web_a
     ec2_vpc_subnet:
@@ -57,7 +57,7 @@
       resource_tags:
         project: wordpress_ansible
         Name: "web_az_{{ zone1 }}"
-    register: subnet-web-a
+    register: subnetweba
 
   - name: create subnet web_b
     ec2_vpc_subnet:
@@ -69,7 +69,7 @@
       resource_tags:
         project: wordpress_ansible
         Name: "web_az_{{ zone2 }}"
-    register: subnet-web-b
+    register: subnetwebb
 
   - name: create subnet data_a
     ec2_vpc_subnet:
@@ -81,7 +81,7 @@
       resource_tags:
         project: wordpress_ansible
         Name: "data_az_{{ zone1 }}"
-    register: subnet-data-a
+    register: subnetdataa
 
   - name: create subnet data_b
     ec2_vpc_subnet:
@@ -93,7 +93,7 @@
       resource_tags:
         project: wordpress_ansible
         Name: "data_az_{{ zone2 }}"
-    register: subnet-data-b
+    register: subnetdatab
 
   - name: vpc internet gateway
     ec2_vpc_igw:
@@ -104,15 +104,20 @@
         project: wordpress_ansible
     register: igw
 
-  - name: test
-    debug:
-      msg: "{{ subnetpublica }}"
-
-  - name: Create new nat gateway
+  - name: Create new nat gateway public a
     ec2_vpc_nat_gateway:
       state: present
       subnet_id: "{{ subnetpublica.subnet.id }}"
       if_exist_do_not_create: true
       wait: yes
       region: "{{ region }}"
-    register: nat_gateway_public_a
+    register: natgatewaypublica
+
+  - name: Create new nat gateway public b
+    ec2_vpc_nat_gateway:
+      state: present
+      subnet_id: "{{ subnetpublicb.subnet.id }}"
+      if_exist_do_not_create: true
+      wait: yes
+      region: "{{ region }}"
+    register: natgatewaypublicb
