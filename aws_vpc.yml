@@ -106,7 +106,7 @@
 
   - name: test
     debug:
-      msg: "{{ subnet-public-a.id }}"
+      msg: "{{ subnet-public-a }}"
 
   - name: Create new nat gateway
     ec2_vpc_nat_gateway:
