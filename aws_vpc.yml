@@ -149,7 +149,6 @@
     ec2_vpc_route_table:
       region: "{{ region }}"
       vpc_id: "{{ network.vpc.id }}"
-      lookup: id
       tags:
         project: "{{ project_name }}"
       subnets: 
