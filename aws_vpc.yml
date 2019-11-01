@@ -106,12 +106,12 @@
 
   - name: test
     debug:
-      msg: "{{ subnet-public-a.subnet.id }}"
+      msg: "{{ subnet-public-a.id }}"
 
   - name: Create new nat gateway
     ec2_vpc_nat_gateway:
       state: present
-      subnet_id: "{{ subnet-public-a.subnet.id }}"
+      subnet_id: "{{ subnet-public-a.id }}"
       if_exist_do_not_create: true
       wait: yes
       region: "{{ region }}"
