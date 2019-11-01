@@ -129,8 +129,16 @@
       region: "{{ region }}"
       filters:
         vpc-id: "{{ network.vpc.id }}"
-    register: route
+    register: routea
 
-  - name: Debug
-    debug:
-      msg: "{{ route.route_tables[0].id }}"
+  - name: Setup route tables public az a
+    ec2_vpc_route_table:
+      region: "{{ region }}"
+      vpc_id: "{{ network.vpc.id }}"
+      lookup: id
+      purge_subnets: false
+      route_table_id: "{{ routea.route_tables[0].id }}"
+      subnets: "{{ subnetpublica.subnet.id }}"
+      routes:
+        - dest: 0.0.0.0/0
+          gateway_id: "{{ igw.gateway_id }}"
