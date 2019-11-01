@@ -1,7 +1,9 @@
 ---
 - hosts: localhost
   vars:
-    region: eu-west-1
+    vpc_name: "Wordpress2"
+    project_name: "wordpress_ansible"
+    region: "eu-west-1"
     cidr: "10.0.0.0/16"
     cidr_public_a: "10.0.1.0/24"
     cidr_public_b: "10.0.4.0/24"
@@ -9,18 +11,18 @@
     cidr_web_b: "10.0.5.0/24"
     cidr_data_a: "10.0.3.0/24"
     cidr_data_b: "10.0.6.0/24"
-    zone1: a
-    zone2: b
+    zone1: "a"
+    zone2: "b"
    
   tasks:
   - name: create VPC
     ec2_vpc_net:
-      name: Wordpress2
+      name: "{{ vpc_name }}"
       cidr_block: "{{ cidr }}"
       region: "{{ region }}"
       state: present
       tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
     register: network      
 
   - name: create subnet public_a
@@ -31,7 +33,7 @@
       az: "{{ region }}{{ zone1 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
         Name: "public_az_{{ zone1 }}"
     register: subnetpublica
 
@@ -43,7 +45,7 @@
       az: "{{ region }}{{ zone2 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
         Name: "public_az_{{ zone2 }}"
     register: subnetpublicb
 
@@ -55,7 +57,7 @@
       az: "{{ region }}{{ zone1 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
         Name: "web_az_{{ zone1 }}"
     register: subnetweba
 
@@ -67,7 +69,7 @@
       az: "{{ region }}{{ zone2 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
         Name: "web_az_{{ zone2 }}"
     register: subnetwebb
 
@@ -79,7 +81,7 @@
       az: "{{ region }}{{ zone1 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
         Name: "data_az_{{ zone1 }}"
     register: subnetdataa
 
@@ -91,7 +93,7 @@
       az: "{{ region }}{{ zone2 }}"
       vpc_id: "{{ network.vpc.id }}"
       resource_tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
         Name: "data_az_{{ zone2 }}"
     register: subnetdatab
 
@@ -101,7 +103,7 @@
       vpc_id: "{{ network.vpc.id }}"
       state: present
       tags:
-        project: wordpress_ansible
+        project: "{{ project_name }}"
     register: igw
 
   - name: Create new nat gateway public a
@@ -121,3 +123,13 @@
       wait: yes
       region: "{{ region }}"
     register: natgatewaypublicb
+
+  - name: Get Route table
+    ec2_vpc_route_table_facts:
+    filters:
+      vpc-id: "{{ network.vpc.id }}"
+    register: route
+
+  - name: Debug
+    debug:
+      msg: route
