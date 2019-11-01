@@ -137,8 +137,25 @@
       vpc_id: "{{ network.vpc.id }}"
       lookup: id
       purge_subnets: false
+      tags:
+        project: "{{ project_name }}"
       route_table_id: "{{ routea.route_tables[0].id }}"
       subnets: "{{ subnetpublica.subnet.id }}"
       routes:
         - dest: 0.0.0.0/0
           gateway_id: "{{ igw.gateway_id }}"
+
+  - name: Setup route tables web and data az a
+    ec2_vpc_route_table:
+      region: "{{ region }}"
+      vpc_id: "{{ network.vpc.id }}"
+      purge_subnets: false
+      tags:
+        project: "{{ project_name }}"
+      subnets: 
+        - "{{ subnetweba.subnet.id }}"
+        - "{{ subnetdataa.subnet.id }}"
+      routes:
+        - dest: 0.0.0.0/0
+          gateway_id: "{{ natgatewaypublica.nat_gateway_id }}"
+    register: routenata
