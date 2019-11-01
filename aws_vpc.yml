@@ -46,3 +46,51 @@
         project: wordpress_ansible
         Name: "public_az_{{ zone2 }}"
     register: subnet-public-b
+
+  - name: create subnet web_a
+    ec2_vpc_subnet:
+      region: "{{ region }}"
+      state: present
+      cidr: "{{ cidr_web_a }}"
+      az: "{{ region }}{{ zone1 }}"
+      vpc_id: "{{ network.vpc.id }}"
+      resource_tags:
+        project: wordpress_ansible
+        Name: "web_az_{{ zone1 }}"
+    register: subnet-web-a
+
+  - name: create subnet web_b
+    ec2_vpc_subnet:
+      region: "{{ region }}"
+      state: present
+      cidr: "{{ cidr_web_b }}"
+      az: "{{ region }}{{ zone2 }}"
+      vpc_id: "{{ network.vpc.id }}"
+      resource_tags:
+        project: wordpress_ansible
+        Name: "web_az_{{ zone2 }}"
+    register: subnet-web-b
+
+  - name: create subnet data_a
+    ec2_vpc_subnet:
+      region: "{{ region }}"
+      state: present
+      cidr: "{{ cidr_data_a }}"
+      az: "{{ region }}{{ zone1 }}"
+      vpc_id: "{{ network.vpc.id }}"
+      resource_tags:
+        project: wordpress_ansible
+        Name: "data_az_{{ zone1 }}"
+    register: subnet-data-a
+
+  - name: create subnet data_b
+    ec2_vpc_subnet:
+      region: "{{ region }}"
+      state: present
+      cidr: "{{ cidr_data_b }}"
+      az: "{{ region }}{{ zone2 }}"
+      vpc_id: "{{ network.vpc.id }}"
+      resource_tags:
+        project: wordpress_ansible
+        Name: "data_az_{{ zone2 }}"
+    register: subnet-data-b
