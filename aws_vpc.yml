@@ -156,5 +156,5 @@
         - "{{ subnetdataa.subnet.id }}"
       routes:
         - dest: 0.0.0.0/0
-          instance_id: "{{ natgatewaypublica.nat_gateway_id }}"
+          instance_id: "{{ natgatewaypublica.instance_id }}"
     register: routenata
