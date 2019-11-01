@@ -126,6 +126,7 @@
 
   - name: Get Route table
     ec2_vpc_route_table_facts:
+      region: "{{ region }}"
       filters:
         vpc-id: "{{ network.vpc.id }}"
     register: route
