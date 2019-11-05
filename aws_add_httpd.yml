@@ -2,12 +2,18 @@
 - hosts: all
   become: yes
   vars:
+    date: "05-11-2019"
    
   tasks:
   - name: install httpd
     yum:
       name: httpd
       state: latest
+
+  - name: change index.html
+    template:
+      src: índex.html
+      dest: /var/www/html/index.html
 
   - name: start httpd
     service:
