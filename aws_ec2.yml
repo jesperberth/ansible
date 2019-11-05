@@ -18,4 +18,4 @@
 
   - name: debug
     debug:
-      msg: server
+      msg: "{{ server }}"
