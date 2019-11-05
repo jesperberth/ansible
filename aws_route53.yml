@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  vars:
+    region: "eu-west-1"
+  
+  tasks:
+  - name: create dns record
+    debug:
+      msg: "{{ ec2_dns_name }}"
