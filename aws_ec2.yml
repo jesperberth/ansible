@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  vars:
+    region: "eu-west-1"
+   
+  tasks:
+  - name: create EC2 instance
+    ec2_instance:
+      name: "server1"
+      region: "{{ region }}"
+      instance_type: t2.micro
+      key_name: "ec2-ireland"
+      security_group: default
