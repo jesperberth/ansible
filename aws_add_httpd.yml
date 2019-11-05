@@ -2,18 +2,19 @@
 - hosts: all
   become: yes
   vars:
-    date: "05-11-2019"
    
   tasks:
   - name: install httpd
     yum:
-      name: httpd
+      name:
+        - httpd
+        - git
       state: latest
 
-  - name: change index.html
-    template:
-      src: índex.html
-      dest: /var/www/html/index.html
+  - name: Git Clone
+    git:
+      repo: "https://github.com/jesperberth/ansibleweb.git"
+      dest: /var/www/html
 
   - name: start httpd
     service:
