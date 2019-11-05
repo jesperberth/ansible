@@ -11,5 +11,6 @@
       instance_type: t2.micro
       key_name: "ec2-ireland"
       security_group: default
+      image_id: ami-040ba9174949f6de4
       tags:
         ansible: webserver
