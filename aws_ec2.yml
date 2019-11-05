@@ -14,8 +14,3 @@
       image_id: ami-040ba9174949f6de4
       tags:
         ansible: webserver
-    register: server
-
-  - name: debug
-    debug:
-      msg: "{{ server }}"
