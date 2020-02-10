@@ -1,0 +1,8 @@
+- name: Show me your variables
+  hosts: localhost
+  tasks:
+  - name: what is username?
+    debug: msg="it is {{ user }}"
+
+  - name: And the password?
+    debug: msg="the secret is {{ pass }}"
