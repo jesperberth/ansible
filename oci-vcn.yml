@@ -17,9 +17,6 @@
       display_name: "{{ vcn_name }}"
       cidr_block: "{{ vcn_cidr_block }}"
       dns_label: "{{ vcn_dns_label }}"
-      region: "{{ region }}"
-      api_user: "{{ api_user }}"
-      api_user_fingerprint: "{{ api_user_fingerprint }}"
     register: vcnresult
   - debug:
       msg: "{{ vcnresult }}"
