@@ -1,8 +1,17 @@
 - name: Show me your variables
   hosts: localhost
   tasks:
-  - name: what is username?
-    debug: msg="it is {{ user }}"
+  - name: api_user
+    debug: msg="{{ api_user }}"
 
-  - name: And the password?
-    debug: msg="the secret is {{ pass }}"
+  - name: api_user_fingerprint
+    debug: msg="{{ api_user_fingerprint }}"
+
+  - name: region
+    debug: msg="{{ region }}"
+
+  - name: tenancy
+    debug: msg="{{ tenancy }}"
+
+  - name: key_file
+    debug: msg="{{ api_user_key_file }}"
