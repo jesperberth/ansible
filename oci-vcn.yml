@@ -19,6 +19,7 @@
       dns_label: "{{ vcn_dns_label }}"
       region: "{{ region }}"
       api_user: "{{ api_user }}"
+      api_user_fingerprint: "{{ api_user_fingerprint }}"
     register: vcnresult
   - debug:
       msg: "{{ vcnresult }}"
