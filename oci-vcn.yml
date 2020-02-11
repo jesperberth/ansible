@@ -31,7 +31,7 @@
     
   - name: Create a VCN
     oci_vcn:
-      config_file_location: "{{ config_file_location }}"
+      #config_file_location: "{{ config_file_location }}"
       compartment_id: "{{ compartmentid }}"
       display_name: "{{ vcn_name }}"
       cidr_block: "{{ vcn_cidr_block }}"
