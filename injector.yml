@@ -1,0 +1,18 @@
+env:
+  OCI_CONFIG_FILE: '{{ tower.filename.configfile }}'
+  OCI_REGION: '{{ region }}'
+  OCI_TENANCY: '{{ tenancy }}'
+  OCI_USER_FINGERPRINT: '{{ api_user_fingerprint }}'
+  OCI_USER_KEY_FILE: '{{ tower.filename.keyfile }}'
+  OCI_USER_KEY_PASS_PHRASE: '{{ api_user_key_pass_phrase }}'
+  OCI_USER_OCID: '{{ api_user }}'
+extra_vars:
+  api_user: '{{ api_user }}'
+  api_user_fingerprint: '{{ api_user_fingerprint }}'
+  api_user_key_file: '{{ tower.filename.keyfile }}'
+  config_file_location: '{{ tower.filename.configfile }}'
+  region: '{{ region }}'
+  tenancy: '{{ tenancy }}'
+file:
+  template.configfile: '{{ config_file }}'
+  template.keyfile: '{{ api_user_key_file }}'

@@ -11,23 +11,23 @@
     webserver_subnet_cidr: "10.0.0.0/24"
   
   tasks:
-  - name: api_user
-    debug: msg="{{ api_user }}"
+#  - name: api_user
+#    debug: msg="{{ api_user }}"
 
-  - name: api_user_fingerprint
-    debug: msg="{{ api_user_fingerprint }}"
+#  - name: api_user_fingerprint
+#    debug: msg="{{ api_user_fingerprint }}"
 
-  - name: region
-    debug: msg="{{ region }}"
+#  - name: region
+#    debug: msg="{{ region }}"
 
-  - name: tenancy
-    debug: msg="{{ tenancy }}"
+#  - name: tenancy
+#    debug: msg="{{ tenancy }}"
 
-  - name: key_file
-    debug: msg="{{ api_user_key_file }}"
+#  - name: key_file
+#    debug: msg="{{ api_user_key_file }}"
 
-  - name: config_file
-    debug: msg="{{ config_file_location }}"
+#  - name: config_file
+#    debug: msg="{{ config_file_location }}"
     
   - name: Create a VCN
     oci_vcn:
@@ -36,11 +36,11 @@
       display_name: "{{ vcn_name }}"
       cidr_block: "{{ vcn_cidr_block }}"
       dns_label: "{{ vcn_dns_label }}"
-      #api_user: "{{ api_user }}"
-      #api_user_fingerprint: "{{ api_user_fingerprint }}"
+      api_user: "{{ api_user }}"
+      api_user_fingerprint: "{{ api_user_fingerprint }}"
       #api_user_key_file: "{{ api_user_key_file }}"
-      #region: "{{ region }}"
-      #tenancy: "{{ tenancy }}"
+      region: "{{ region }}"
+      tenancy: "{{ tenancy }}"
     register: vcnresult
   - debug:
       msg: "{{ vcnresult }}"
