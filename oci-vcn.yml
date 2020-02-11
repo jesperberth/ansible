@@ -40,7 +40,7 @@
       api_user_fingerprint: "{{ api_user_fingerprint }}"
       #api_user_key_file: "{{ api_user_key_file }}"
       #region: "{{ region }}"
-      tenancy: "{{ tenancy }}"
+      #tenancy: "{{ tenancy }}"
     register: vcnresult
   - debug:
       msg: "{{ vcnresult }}"
