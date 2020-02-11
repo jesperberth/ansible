@@ -36,11 +36,11 @@
       display_name: "{{ vcn_name }}"
       cidr_block: "{{ vcn_cidr_block }}"
       dns_label: "{{ vcn_dns_label }}"
-      api_user: "{{ api_user }}"
-      api_user_fingerprint: "{{ api_user_fingerprint }}"
-      api_user_key_file: "{{ api_user_key_file }}"
-      region: "{{ region }}"
-      tenancy: "{{ tenancy }}"
+      #api_user: "{{ api_user }}"
+      #api_user_fingerprint: "{{ api_user_fingerprint }}"
+      #api_user_key_file: "{{ api_user_key_file }}"
+      #region: "{{ region }}"
+      #tenancy: "{{ tenancy }}"
     register: vcnresult
   - debug:
       msg: "{{ vcnresult }}"
