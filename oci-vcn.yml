@@ -25,9 +25,13 @@
 
   - name: key_file
     debug: msg="{{ api_user_key_file }}"
+
+  - name: config_file
+    debug: msg="{{ config_file_location }}"
     
   - name: Create a VCN
     oci_vcn:
+      config_file_location: "{{ config_file_location }}"
       compartment_id: "{{ compartmentid }}"
       display_name: "{{ vcn_name }}"
       cidr_block: "{{ vcn_cidr_block }}"
