@@ -1,6 +1,6 @@
 ---
 - name: Run Windows Update
-  hosts: "{{ maintenance }}"
+  hosts: Win-Update-Group1
   gather_facts: false
   tasks:
     - name: Windows Update
@@ -10,8 +10,12 @@
           - CriticalUpdates
           - UpdateRollups
       register:  update_result
+
     - name: reboot
       win_reboot:
         reboot_timeout: 3600
       when: update_result.reboot_required
-    - debug: var=update_result
+
+    - name: Show Update Results
+      debug: 
+        msg: update_result
