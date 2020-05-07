@@ -1,6 +1,6 @@
 ---
 - name: Run Windows Update
-  hosts: Win-Update-Group1
+  hosts: ansible_update_group1
   gather_facts: false
   tasks:
     - name: Windows Update
@@ -19,3 +19,4 @@
     - name: Show Update Results
       debug: 
         msg: update_result
+        
