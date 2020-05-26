@@ -10,21 +10,11 @@
     vm_memory: 8GiB
     cpu_cores: 2
     network: "130-arrowdemo"
-    vm_name: awx5.arrowdemo.local
+    vm_name: test.arrowdemo.local
 
-  vars_files:
-    - ~/ovirt/rhv_vars.yml
-    - ~/ovirt/password.yml
   pre_tasks:
     - name: Login to oVirt
       ovirt_auth:
-        url: "{{ rhvm_fqdn }}"
-        username: "{{ rhvm_user }}"
-        password: "{{ rhvm_password }}"
-        ca_file: "{{ rhvm_cafile }}"
-        insecure: no
-      tags:
-        - always
 
   tasks:
   - name: Create and run VM from template
@@ -41,16 +31,6 @@
       - name: nic1
         profile_name: "{{ network }}"
         network_name: "{{ network }}"
-#     cloud_init:
-#      nic_boot_protocol: static
-#      nic_ip_address: "192.168.130.31"
-#      nic_netmask: "255.255.255.0"
-#      nic_gateway: "192.168.130.1"
-#      dns_servers: "192.168.130.21,192.168.130.22"
-#      dns_search: "arrowdemo.local"
-#      nic_name: ens3
-#      nic_on_boot: true
-#      host_name: "{{ vm_name }}"
      wait: yes
 
   post_tasks:
