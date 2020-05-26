@@ -15,7 +15,9 @@
   - name: Create and run VM from template
     ovirt_nic_info:
       vm: "{{ vm_name }}"
-      fetch_nested: True
+      fetch_nested: yes
+      nested_attributes:
+        - NicConfiguration
     register: ovirtvm      
 
   - name: Debug
