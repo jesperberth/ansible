@@ -6,7 +6,7 @@
   vars:
     datacenter: Democenter
     cluster: Arrowdemo
-    template: CentOS8
+    template: Win2019
     vm_memory: 8GiB
     cpu_cores: 2
     network: "130-arrowdemo"
@@ -38,5 +38,3 @@
       ovirt_auth:
         state: absent
         ovirt_auth: "{{ ovirt_auth }}"
-      tags:
-       - always
