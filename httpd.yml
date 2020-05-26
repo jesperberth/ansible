@@ -1,31 +1,42 @@
 ---
 - hosts: "{{ vm_name }}"
   remote_user: root
+  vars:
+    gitrepo: https://github.com/jesperberth/tomato-monkey.git
+    
   tasks:
     - name: ensure httpd is installed
       yum:
        name: httpd
        state: latest
+
     - name: ensure httpd is enabled
       service:
         name: httpd
         enabled: yes
-    - name: Copy index.html
-      template:
-        src: index.html
-        dest: /var/www/html/index.html
-      notify:
-       - restart httpd
+
+    - name: Install git
+      yum:
+        name: git
+        state: latest
+
+    - name: Download Website from Github  
+      git:
+        repo: "{{ gitrepo }}"
+        dest: "/var/www/html"
+
     - name: ensure httpd is running
       service:
        name: httpd
        state: started
+
     - name: Firewall Allow Http
       firewalld:
         zone: public
         service: http
         permanent: true
         state: enabled
+
   handlers:
     - name: restart httpd
       service:
