@@ -36,9 +36,15 @@
         service: http
         permanent: true
         state: enabled
+      notify: reload firewall
 
   handlers:
     - name: restart httpd
       service:
         name: httpd
         state: restarted
+
+    - name: reload firewall
+      systemd:
+        name: firewalld
+        state: reloaded
