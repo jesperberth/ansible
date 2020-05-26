@@ -1,0 +1,41 @@
+---
+- name: Test Ovirt
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    datacenter: Democenter
+    cluster: Arrowdemo
+    template: CentOS8
+    vm_memory: 8GiB
+    cpu_cores: 2
+    network: "130-arrowdemo"
+    vm_name: awx5.arrowdemo.local
+
+  pre_tasks:
+    - name: Login to oVirt
+      ovirt_auth:
+#        url: "{{ rhvm_fqdn }}"
+#        username: "{{ rhvm_user }}"
+#        password: "{{ rhvm_password }}"
+#       ca_file: "{{ rhvm_cafile }}"
+#       insecure: no
+#      tags:
+#        - always
+
+  tasks:
+  - name: Create and run VM from template
+    ovirt_cluster_info:
+    register: ovirtinfo      
+
+  - name: Debug
+    debug:
+      msg: "{{ ovirtinfo }}"
+      
+  post_tasks:
+    - name: Logout from oVirt
+      ovirt_auth:
+        state: absent
+        ovirt_auth: "{{ ovirt_auth }}"
+      tags:
+       - always
