@@ -33,9 +33,9 @@
         network_name: "{{ network }}"
      wait: yes
 
-  - name: Wait for vm
-    pause:
-      minutes: 5
+#  - name: Wait for vm
+#    pause:
+#      minutes: 5
 
   post_tasks:
     - name: Logout from oVirt
