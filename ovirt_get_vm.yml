@@ -1,0 +1,28 @@
+---
+- name: Get Ovirt VM
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    datacenter: Democenter
+    cluster: Arrowdemo
+
+  pre_tasks:
+    - name: Login to oVirt
+      ovirt_auth:
+
+  tasks:
+  - name: Create and run VM from template
+    ovirt_vm_info:
+      pattern: name="{{ vm_name }}"
+    register: ovirtvm      
+
+  - name: Debug
+    debug:
+      msg: "{{ ovirtvm }}"
+      
+  post_tasks:
+    - name: Logout from oVirt
+      ovirt_auth:
+        state: absent
+        ovirt_auth: "{{ ovirt_auth }}"
