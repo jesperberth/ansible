@@ -16,8 +16,7 @@
     ovirt_nic_info:
       vm: "{{ vm_name }}"
       fetch_nested: yes
-      nested_attributes:
-        - NicConfiguration
+      nested_attributes: NicConfiguration
     register: ovirtvm      
 
   - name: Debug
