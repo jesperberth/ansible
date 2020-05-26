@@ -9,8 +9,8 @@
     template: Win2019
     vm_memory: 8GiB
     cpu_cores: 2
-    network: "130-arrowdemo"
-    vm_name: test.arrowdemo.local
+    network: "ovirtmgmt"
+    vm_name: test.redhat.local
 
   pre_tasks:
     - name: Login to oVirt
