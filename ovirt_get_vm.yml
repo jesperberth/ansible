@@ -17,7 +17,7 @@
       vm: "{{ vm_name }}"
       fetch_nested: yes
       nested_attributes:
-        - ip
+        - NicConfiguration
     register: ovirtvm      
 
   - name: Debug
