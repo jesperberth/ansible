@@ -6,11 +6,11 @@
   vars:
     datacenter: Democenter
     cluster: Arrowdemo
-    template: Win2019
-    vm_memory: 8GiB
-    cpu_cores: 2
+    #template: Win2019
+    #vm_memory: 8GiB
+    #cpu_cores: 2
     network: "ovirtmgmt"
-    vm_name: test.redhat.local
+    #vm_name: test.redhat.local
 
   pre_tasks:
     - name: Login to oVirt
