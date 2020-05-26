@@ -13,8 +13,8 @@
 
   tasks:
   - name: Create and run VM from template
-    ovirt_vm_info:
-      pattern: name="{{ vm_name }}"
+    ovirt_nic_info:
+      vm: "{{ vm_name }}"
     register: ovirtvm      
 
   - name: Debug
