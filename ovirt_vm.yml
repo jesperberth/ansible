@@ -31,6 +31,10 @@
       - name: nic1
         profile_name: "{{ network }}"
         network_name: "{{ network }}"
+     sysprep:
+       host_name: "{{ vm_name }}.redhat.local"
+       user_name: "{{ vm_user }}"
+       root_password: "{{ vm_password }}"
      wait: yes
 
   - name: Tag VM
