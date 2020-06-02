@@ -1,0 +1,22 @@
+---
+- name: Run Windows Update
+  hosts: win_update
+  gather_facts: false
+  tasks:
+    - name: Windows Update
+      win_updates:
+        category_names:
+          - SecurityUpdates
+          - CriticalUpdates
+          - UpdateRollups
+      register:  update_result
+
+    - name: reboot
+      win_reboot:
+        reboot_timeout: 3600
+      when: update_result.reboot_required
+
+    - name: Show Update Results
+      debug: 
+        msg: update_result
+        
