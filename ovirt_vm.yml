@@ -35,6 +35,7 @@
        host_name: "{{ vm_name }}"
        user_name: "{{ vm_user }}"
        root_password: "{{ vm_password }}"
+       windows_license_key: "{{ windows_key }}"
      wait: yes
 
   - name: Wait for vm
