@@ -33,6 +33,11 @@
         network_name: "{{ network }}"
      wait: yes
 
+  - name: Tag VM
+    ovirt_tag:
+      name: ansible_windows_group1
+      vms: "{{ vm_name }}"
+  
   - name: Wait for vm
     pause:
       minutes: 5
