@@ -20,7 +20,7 @@
   - name: Create and run VM from template
     ovirt_vm:
      auth: "{{ ovirt_auth }}"
-     name: "{{ vm_name }}"
+     name: "{{ vm_name }}.{{ vm_domain }}"
      template: "{{ template }}"
      cluster: "{{ cluster }}"
      memory: "{{ vm_memory }}"
@@ -32,7 +32,7 @@
         profile_name: "{{ network }}"
         network_name: "{{ network }}"
      sysprep:
-       host_name: "{{ vm_name }}.redhat.local"
+       host_name: "{{ vm_name }}"
        user_name: "{{ vm_user }}"
        root_password: "{{ vm_password }}"
      wait: yes
