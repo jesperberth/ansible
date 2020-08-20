@@ -6,7 +6,7 @@
   - name: Clone the template
     vmware_guest:
       hostname: "{{ vmware_host }}"
-      username: "{{ vmware_username }}"
+      username: "{{ vmware_user }}"
       password: "{{ vmware_password }}"
       validate_certs: False
       name: "{{ vmname }}"
