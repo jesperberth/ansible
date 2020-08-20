@@ -5,23 +5,23 @@
   tasks:
   - name: Clone the template
     vmware_guest:
-      hostname: "{{ vcenter_hostname }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
-      validate_certs: False
-      name: "{{ vmname }}"
-      template: "{{ template }}"
-      disk:
-      - size_gb: 70
-        type: thin
-        datastore: "{{ datastore }}"
-      networks:
-      - name: "{{ vmnetwork }}"
-      datacenter: Datacenter
-      folder: "{{ folder }}"
-      state: poweredon
-      cluster: Cluster01
-      wait_for_ip_address: yes
+       #hostname: "{{ vcenter_hostname }}"
+       #username: "{{ vcenter_username }}"
+       #password: "{{ vcenter_password }}"
+       validate_certs: False
+       name: "{{ vmname }}"
+       template: "{{ template }}"
+       disk:
+        - size_gb: 70
+          type: thin
+          datastore: "{{ datastore }}"
+       networks:
+        - name: "{{ vmnetwork }}"
+       datacenter: Datacenter
+       folder: "{{ folder }}"
+       state: poweredon
+       cluster: Cluster01
+       wait_for_ip_address: yes
     register: newvm
   - name: IP Info
     debug:
