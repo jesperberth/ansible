@@ -9,14 +9,14 @@
       username: "{{ vcenter_username }}"
       password: "{{ vcenter_password }}"
       validate_certs: False
-      name: testvm_2
-      template: _TEMP_centos7_x64
+      name: "{{ vmname }}"
+      template: "{{ template }}"
       disk:
       - size_gb: 70
         type: thin
-        datastore: St01_ZFS_LUN05
+        datastore: "{{ datastore }}"
       networks:
-      - name: "125 - redhat.local"
+      - name: "{{ vmnetwork }}"
       datacenter: Arrowdemo
       folder: "/Red Hat"
       state: poweredon
