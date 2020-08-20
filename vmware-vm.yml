@@ -5,9 +5,9 @@
   tasks:
   - name: Clone the template
     vmware_guest:
-      hostname: "{{ host }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
+      hostname: "{{ vmware_host }}"
+      username: "{{ vmware_username }}"
+      password: "{{ vmware_password }}"
       validate_certs: False
       name: "{{ vmname }}"
       template: "{{ template }}"
