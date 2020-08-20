@@ -17,10 +17,10 @@
         datastore: "{{ datastore }}"
       networks:
       - name: "{{ vmnetwork }}"
-      datacenter: Arrowdemo
-      folder: "/Red Hat"
+      datacenter: Datacenter
+      folder: "{{ folder }}"
       state: poweredon
-      cluster: Democluster01
+      cluster: Cluster01
       wait_for_ip_address: yes
     register: newvm
   - name: IP Info
