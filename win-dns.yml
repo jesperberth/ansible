@@ -1,0 +1,9 @@
+---
+- name: Change DNS to 8.8.8.8
+  hosts: windows-servers
+  gather_facts: false
+  tasks:
+    - name: Set DNS
+      win_dns_client:
+        adapter_names: "*"
+        ipv4_addresses: 8.8.8.8
