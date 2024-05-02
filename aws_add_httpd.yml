@@ -1,11 +1,11 @@
 ---
 - hosts: all
-  become: yes
+  become: true
   vars:
-   
+
   tasks:
   - name: install httpd
-    yum:
+    ansible.builtin.yum:
       name:
         - httpd
         - git
